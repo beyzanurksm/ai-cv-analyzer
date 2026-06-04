@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+venv/
+.venv/
+src/backend/venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# PyInstaller / Build outputs
+build/
+dist/
+release/
+out/
+*.spec
+
+# Environment variables and secrets
+.env
+*.env
+*.key
+
+# Logs
+*.log
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

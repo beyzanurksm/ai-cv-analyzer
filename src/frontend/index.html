@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI CV Analyzer & ATS Optimizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="logo">🤖 AI <span class="accent">CV Analiz</span></div>
+    <div class="nav-actions">
+      <button id="btn-settings" class="icon-btn" title="API Ayarları">⚙️</button>
+    </div>
+  </header>
+
+  <main class="app-container">
+    
+    <div id="settings-panel" class="settings-panel hidden">
+      <h3>🔒 Gemini API Yapılandırması (BYOK)</h3>
+      <p>Proje verilerinizin gizliliği için kendi Google AI Studio anahtarınızı kullanın.</p>
+      <div class="input-group">
+  <input type="password" id="api-key-input" placeholder="API Anahtarınızı Yapıştırın">
+  <button id="btn-save-key">Kaydet</button>
+  <button id="btn-clear-key" class="btn-clear-key">Sıfırla</button>
+</div>
+      <p class="hint">Anahtarınız yalnızca bu cihazda yerel olarak saklanır. İsterseniz Sıfırla butonu ile silebilirsiniz.</p>
+    </div>
+
+    <section class="upload-section">
+      <div id="drop-zone" class="drop-zone">
+        <div class="drop-zone-content">
+          <span class="upload-icon">📄</span>
+          <h4>CV / Özgeçmişinizi Buraya Sürükleyin</h4>
+          <p>veya dosya seçmek için <span>tıklayın</span></p>
+          <small>Desteklenen format: Sadece PDF (Maks. 5MB)</small>
+        </div>
+        <input type="file" id="file-input" accept=".pdf" style="display: none;">
+      </div>
+
+      <div class="jd-container">
+        <label for="jd-input">🎯 Hedef İş İlanı / Rol Açıklaması (Opsiyonel)</label>
+        <textarea id="jd-input" placeholder="Eşleştirme analizi için hedef iş ilanının metnini buraya yapıştırabilirsiniz..."></textarea>
+      </div>
+
+      <button id="btn-analyze" class="btn-primary" disabled>Analizi Başlat</button>
+    </section>
+
+    <section id="loading-screen" class="loading-screen hidden">
+      <div class="spinner"></div>
+      <p>Yapay zekâ CV'nizi inceliyor, ATS kriterleri taranıyor...</p>
+    </section>
+
+    <section id="results-section" class="results-section hidden">
+      <hr class="divider">
+      <h2>📊 Analiz Raporu</h2>
+      
+      <div class="dashboard-grid">
+        <div class="card score-card">
+          <h4>Genel ATS Skoru</h4>
+          <div class="score-circle">
+            <span id="score-value">0</span><small>/100</small>
+          </div>
+        </div>
+
+        <div class="card positive-card">
+          <h4>🌟 Öne Çıkan Güçlü Yönler</h4>
+          <ul id="list-strengths"></ul>
+        </div>
+
+        <div class="card negative-card">
+          <h4>⚠️ Kritik Eksikler & Gaps</h4>
+          <ul id="list-gaps"></ul>
+        </div>
+      </div>
+
+      <div class="full-width-grid">
+        <div class="card actionable-card">
+          <h4>💡 Stratejik Gelişim Tavsiyeleri</h4>
+          <ul id="list-suggestions"></ul>
+        </div>
+
+        <div class="card ats-card">
+          <h4>🛠️ ATS Optimizasyon İpuçları (Anahtar Kelimeler)</h4>
+          <ul id="list-ats"></ul>
+        </div>
+      </div>
+
+      <div class="actions-container">
+        <button id="btn-download-pdf" class="btn-secondary">📄 PDF Raporu Olarak İndir</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="./renderer.js"></script>
+</body>
+</html>
